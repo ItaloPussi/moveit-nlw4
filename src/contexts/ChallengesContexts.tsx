@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useState} from 'react'
+import {createContext, ReactNode, useEffect, useState} from 'react'
 import challenges from '../../challenges.json'
 
 interface Challenge {
@@ -8,6 +8,7 @@ interface Challenge {
 }
 
 interface ChallengesContextData {
+    mode: string,
     level: number,
     currentExperience: number,
     challengesCompleted: number,
@@ -15,6 +16,7 @@ interface ChallengesContextData {
     activeChallenge: Challenge,
     resetChallenge: () => void,
     startNewChallenge: () => void;
+    challengeCompleted: () => void;
 }
 
 interface ChallengesProviderProps {
@@ -28,7 +30,7 @@ export function ChallengesProvider({children}){
     const [currentExperience, setCurrentExperience] = useState(0)
     const [challengesCompleted, setChallengesCompleted] = useState(0)
     const [activeChallenge, setActiveChallenge] = useState(null)
-    
+    const [mode, setMode] = useState("dark")
     const experienceToNextLevel = Math.pow((level+1)*4,2)
 
     function startNewChallenge(){
@@ -40,6 +42,23 @@ export function ChallengesProvider({children}){
     function resetChallenge(){
         setActiveChallenge(null)
     }
+    
+    function levelUp(){
+        setLevel(level+1)
+    }
+
+    useEffect(()=>{
+        if(currentExperience >= experienceToNextLevel){
+            setCurrentExperience(currentExperience - experienceToNextLevel)
+            levelUp()
+        }
+    },[currentExperience])
+
+    async function challengeCompleted(){
+        setChallengesCompleted(challengesCompleted+1)
+        setCurrentExperience(currentExperience+activeChallenge.amount)
+        setActiveChallenge(null)
+    }
     return (
         <ChallengesContext.Provider 
             value={{
@@ -48,8 +67,10 @@ export function ChallengesProvider({children}){
                 challengesCompleted,
                 activeChallenge,
                 experienceToNextLevel,
+                mode,
                 startNewChallenge,
                 resetChallenge,
+                challengeCompleted
             }}>
             {children}
         </ChallengesContext.Provider>

@@ -9,23 +9,29 @@ import ChallengeBox from '../components/ChallengeBox/ChallengeBox'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Inicio | Move It</title>
-      </Head>
-      <ExperienceBar />
+    <>
+      <button className={styles.darkModeButton} onClick={()=>document.body.classList.toggle("light")}>
+        TD
+      </button>
 
-      <section>
-        <div>
-          <Profile />
-          <CompletedChallenges />
-          <Countdown />
-        </div>
+      <div className={styles.container}>
+        <Head>
+          <title>Inicio | Move It</title>
+        </Head>
+        <ExperienceBar />
 
-        <div>
-          <ChallengeBox />
-        </div>
-      </section>
-    </div>
+        <section>
+          <div>
+            <Profile />
+            <CompletedChallenges />
+            <Countdown />
+          </div>
+
+          <div>
+            <ChallengeBox />
+          </div>
+        </section>
+      </div>
+    </>
   )
 }

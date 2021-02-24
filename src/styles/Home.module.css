@@ -1,10 +1,12 @@
 .container {
     height: 100vh;
     max-width: 992px;
+    width: 100%;
     margin: 0 auto;
     padding: 2rem 2rem;
     display: flex;
     flex-direction: column;
+    gap: 2rem;
 }
 
 .container section {
@@ -13,4 +15,42 @@
     grid-template-columns: 1fr 1fr;
     gap:  6.25rem;
     align-content: center;
+}
+
+@media (max-width:1080px){
+    .container {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px){
+    .container {
+        max-width: 70%;
+        gap: 4rem;
+    }
+
+    .container section {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+}
+
+@media (max-width: 500px){
+    .container {
+        max-width: 90%;
+        height: auto;
+    }
+}
+
+.darkModeButton {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: var(--text);
+    border: 1px solid;
+    width: 24px;
+    height:24px;
 }

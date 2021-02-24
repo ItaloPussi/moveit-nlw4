@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
 .challengeNotActive strong{
@@ -40,6 +41,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 }
 
 .challengeActive header{
@@ -86,6 +88,7 @@
     font-size: 1rem;
     font-weight: 600;
     transition: filter .2s;
+    filter: brightness(var(--brightness));
 }
 
 .challengeActive footer button.challengeFailedButton{
@@ -97,5 +100,5 @@
 }
 
 .challengeActive footer button:hover{
-    filter: brightness(0.9);
+    filter: brightness(var(--brightness-hover));
 }

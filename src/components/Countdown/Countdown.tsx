@@ -8,10 +8,10 @@ import styles from './Countdown.module.css'
 let countdownTimeout: NodeJS.Timeout;
 
 export default function Countdown(){
-    const {startNewChallenge} = useContext(ChallengesContext)
+    const {startNewChallenge, activeChallenge} = useContext(ChallengesContext)
+
     const [time, setTime] = useState(0.1*60)
     const [isActive, setIsActive] = useState(false)
-    const [hasFinished, setHasFinished] = useState(false)
     const minutes = Math.floor(time / 60)
     const seconds = time % 60;
 
@@ -19,12 +19,17 @@ export default function Countdown(){
     const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("")
     
     useEffect(()=>{
+        if(activeChallenge == null){
+            resetCountdown()
+        }
+    }, [activeChallenge])
+    
+    useEffect(()=>{
         if(isActive && time > 0){
             countdownTimeout = setTimeout(()=>{
                 setTime(time-1)
             },1000)
         } else if(isActive && time == 0){
-            setHasFinished(true)
             setIsActive(false)
             startNewChallenge()
         }
@@ -52,7 +57,7 @@ export default function Countdown(){
                     <span>{secondRight}</span>
                 </div>
             </div>
-            { hasFinished ? (
+            { activeChallenge ? (
                 <button className={styles.countdownButton} disabled>Ciclo encerrado</button>
             ) : (
                 <>
