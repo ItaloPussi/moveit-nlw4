@@ -31,12 +31,25 @@ export function ChallengesProvider({children}){
     const [challengesCompleted, setChallengesCompleted] = useState(0)
     const [activeChallenge, setActiveChallenge] = useState(null)
     const [mode, setMode] = useState("dark")
+
     const experienceToNextLevel = Math.pow((level+1)*4,2)
+
+    useEffect(()=>{
+        Notification.requestPermission()
+    },[])
 
     function startNewChallenge(){
         const randomChallengeIndex = Math.floor(Math.random() * challenges.length)
         const randomChallenge = challenges[randomChallengeIndex]
         setActiveChallenge(randomChallenge)
+
+        new Audio("/notification.mp3").play()
+        if(Notification.permission === 'granted'){
+            new Notification("Novo desafio 🎉", {
+                body: `Valendo ${randomChallenge.amount} xp`,
+                silent: true,
+            })
+        }
     }
 
     function resetChallenge(){
@@ -55,6 +68,7 @@ export function ChallengesProvider({children}){
     },[currentExperience])
 
     async function challengeCompleted(){
+        if(!activeChallenge) return
         setChallengesCompleted(challengesCompleted+1)
         setCurrentExperience(currentExperience+activeChallenge.amount)
         setActiveChallenge(null)

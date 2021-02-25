@@ -2,7 +2,6 @@ import { Head } from 'next/document'
 import { useContext, useEffect, useState } from 'react'
 import { start } from 'repl'
 import { ChallengesContext } from '../../contexts/ChallengesContexts'
-import Button from '../Button/Button'
 import styles from './Countdown.module.css'
 
 let countdownTimeout: NodeJS.Timeout;
