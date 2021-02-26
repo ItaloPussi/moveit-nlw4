@@ -4,7 +4,7 @@ import challenges from '../../challenges.json'
 import LevelUpModal from '../components/LevelUpModal/LevelUpModal'
 
 interface Challenge {
-    type: 'body' | 'eye',
+    type: 'body' | 'eye' | "legs",
     description: string,
     amount: number;
 }

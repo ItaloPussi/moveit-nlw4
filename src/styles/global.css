@@ -13,6 +13,7 @@ body.light {
     --border-countdown: #f0f1f3;
     --brightness: 1;
     --brightness-hover: 0.9;
+    --box-shadow: 0 0 60px rgba(0,0,0,0.05);
 }
 
 body:not(.light){
@@ -28,6 +29,7 @@ body:not(.light){
     --blue-dark: #4953b8;
     --blue-twitter: #2aa9e0;
     --border-countdown: #222;
+    --box-shadow: 0 0 30px rgba(80, 6, 102, 0.157);
 }
 
 

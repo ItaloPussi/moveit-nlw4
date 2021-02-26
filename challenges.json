@@ -5,6 +5,11 @@
       "amount": 80
     },
     {
+      "type": "legs",
+      "description": "Com a postura ereta, cruze os dedos acima da cabeça e estenda os braços com as palmas viradas para cima. Permaneça nesta posição por pelo menos 15 segundos",
+      "amount": 80
+    },
+    {
       "type": "body",
       "description": "Estique seu braço contra o peito e puxe-o utilizando o outro braço por 10 segundos por braço.",
       "amount": 60
@@ -20,7 +25,7 @@
       "amount": 60
     },
     {
-      "type": "body",
+      "type": "legs",
       "description": "Cruze as pernas e desça com as mãos esticadas em direção ao chão. Repita o movimento com a outra perna na frente.",
       "amount": 100
     },
@@ -30,12 +35,12 @@
       "amount": 80
     },
     {
-      "type": "body",
+      "type": "legs",
       "description": "Puxe o joelho de encontro ao peito e segure, troque de perna após 10 segundos.",
       "amount": 50
     },
     {
-      "type": "body",
+      "type": "legs",
       "description": "Sentado, cruze uma perna e incline seu tronco à frente, troque de perna após 10 segundos.",
       "amount": 80
     },
