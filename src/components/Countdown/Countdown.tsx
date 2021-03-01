@@ -14,6 +14,7 @@ export default function Countdown(){
     const minutes = Math.floor(time / 60)
     const seconds = time % 60;
 
+    const [starterTime, setStarterTime] = useState(null)
     const [minuteLeft, minuteRight] = String(minutes).padStart(2, "0").split("")
     const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("")
     
@@ -23,10 +24,17 @@ export default function Countdown(){
         }
     }, [activeChallenge])
     
+    const timer = () => {
+        let now:any = new Date()
+        let difference = Math.floor(Math.abs((starterTime-now)/1000))
+        let timeleft = 25*60-difference
+        if(timeleft <0) return
+        setTime(timeleft)
+    }
     useEffect(()=>{
         if(isActive && time > 0){
             countdownTimeout = setTimeout(()=>{
-                setTime(time-1)
+                timer()
             },1000)
         } else if(isActive && time == 0){
             setIsActive(false)
@@ -36,6 +44,7 @@ export default function Countdown(){
 
     function startCountdown(){
         setIsActive(true)
+        setStarterTime(new Date())
     }
 
     function resetCountdown(){
