@@ -28,7 +28,9 @@ export default function Countdown(){
         let now:any = new Date()
         let difference = Math.floor(Math.abs((starterTime-now)/1000))
         let timeleft = 25*60-difference
-        if(timeleft <0) return
+        if(timeleft <0) {
+            timeleft = 0
+        }
         setTime(timeleft)
     }
     useEffect(()=>{

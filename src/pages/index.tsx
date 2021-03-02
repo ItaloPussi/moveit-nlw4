@@ -22,7 +22,6 @@ export default function Home(props) {
     setIsDarken(!isDarken)
   }
 
-  console.log(props)
   return (
     <ChallengesProvider level={props.level} currentExperience={props.currentExperience} challengesCompleted={props.challengesCompleted}>
       <button className={styles.darkModeButton} onClick={toggleDarkMode}>
